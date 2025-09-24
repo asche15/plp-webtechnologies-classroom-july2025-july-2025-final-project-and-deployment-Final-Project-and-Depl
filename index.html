@@ -3,10 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Chen - Personal Blog</title>
-    <link rel="stylesheet" href="styles.css">
-    </head>
+    <meta name="description" content="Alex Chen - Web Developer & Digital Storyteller. Passionate about creating beautiful, functional web applications. Blog covering web development, JavaScript, CSS, and programming best practices.">
+    <meta name="keywords" content="web development, JavaScript, CSS, React, Node.js, programming, blog, portfolio">
+    <meta name="author" content="Alex Chen">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alexchen.dev/">
+    <meta property="og:title" content="Alex Chen - Web Developer & Digital Storyteller">
+    <meta property="og:description" content="Passionate web developer sharing insights about modern web technologies, JavaScript, CSS, and programming best practices.">
+    <meta property="og:image" content="https://alexchen.dev/assets/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://alexchen.dev/">
+    <meta property="twitter:title" content="Alex Chen - Web Developer & Digital Storyteller">
+    <meta property="twitter:description" content="Passionate web developer sharing insights about modern web technologies, JavaScript, CSS, and programming best practices.">
+    <meta property="twitter:image" content="https://alexchen.dev/assets/images/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    
+    <title>Alex Chen - Web Developer & Digital Storyteller</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="container">
         <header>
             <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">🌙</button>
@@ -29,7 +55,7 @@
         </div>
 
         <div class="main-content">
-            <main class="content-area">
+            <main id="main-content" class="content-area">
                 <!-- Home Section -->
                 <div id="home-section" class="section active">
                     <div class="blog-posts">
@@ -273,22 +299,26 @@
 
                             <div class="contact-form">
                                 <h3>Send a Message</h3>
-                                <form onsubmit="sendMessage(event)">
+                                <form id="contact-form" onsubmit="sendMessage(event)" novalidate>
                                     <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" id="name" name="name" required>
+                                        <label for="name">Name *</label>
+                                        <input type="text" id="name" name="name" required minlength="2" maxlength="50" 
+                                               placeholder="Your full name" autocomplete="name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" id="email" name="email" required>
+                                        <label for="email">Email *</label>
+                                        <input type="email" id="email" name="email" required maxlength="100"
+                                               placeholder="your.email@example.com" autocomplete="email">
                                     </div>
                                     <div class="form-group">
-                                        <label for="subject">Subject</label>
-                                        <input type="text" id="subject" name="subject" required>
+                                        <label for="subject">Subject *</label>
+                                        <input type="text" id="subject" name="subject" required minlength="3" maxlength="100"
+                                               placeholder="Brief subject of your message">
                                     </div>
                                     <div class="form-group">
-                                        <label for="message">Message</label>
-                                        <textarea id="message" name="message" rows="5" required></textarea>
+                                        <label for="message">Message *</label>
+                                        <textarea id="message" name="message" rows="6" required minlength="10" maxlength="1000"
+                                                  placeholder="Your message here..."></textarea>
                                     </div>
                                     <button type="submit" class="submit-btn">Send Message</button>
                                 </form>
@@ -346,7 +376,7 @@
         </footer>
     </div>
 
-    <script src="script.js">
+    <script src="js/script.js">
       
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98449b8ca16d348a',t:'MTc1ODc0MTI5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
