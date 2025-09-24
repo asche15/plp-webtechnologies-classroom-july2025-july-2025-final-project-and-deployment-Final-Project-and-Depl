@@ -1,5 +1,21 @@
-  // Theme Management
-        let isDarkTheme = false;
+/**
+ * Alex Chen Personal Blog - Main JavaScript File
+ * 
+ * This file handles all interactive functionality including:
+ * - Theme management (light/dark mode)
+ * - Navigation and section switching
+ * - Search and filtering functionality
+ * - Contact form handling
+ * - User experience enhancements
+ * 
+ * @author Alex Chen
+ * @version 1.2.0
+ */
+
+// ====================================
+// THEME MANAGEMENT
+// ====================================
+let isDarkTheme = false;
 
         function toggleTheme() {
             isDarkTheme = !isDarkTheme;
@@ -128,29 +144,100 @@
             });
         }
 
-        // Contact form submission
+        // ====================================
+        // CONTACT FORM HANDLING
+        // ====================================
+        
+        /**
+         * Validates email format using regex
+         * @param {string} email - Email address to validate
+         * @returns {boolean} - True if valid email format
+         */
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        /**
+         * Displays form validation message
+         * @param {string} message - Message to display
+         * @param {string} type - Type of message ('error' or 'success')
+         */
+        function showFormMessage(message, type = 'error') {
+            // Remove existing message
+            const existingMessage = document.querySelector('.form-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `form-message ${type}`;
+            messageDiv.textContent = message;
+            messageDiv.style.cssText = `
+                padding: 10px;
+                margin: 10px 0;
+                border-radius: 5px;
+                background: ${type === 'error' ? '#fee' : '#efe'};
+                color: ${type === 'error' ? '#c33' : '#363'};
+                border: 1px solid ${type === 'error' ? '#fcc' : '#cfc'};
+            `;
+            
+            const form = document.querySelector('#contact-form');
+            if (form) {
+                form.insertBefore(messageDiv, form.firstChild);
+                setTimeout(() => messageDiv.remove(), 5000);
+            }
+        }
+
+        // Contact form submission with enhanced validation
         function sendMessage(event) {
             event.preventDefault();
             
             const form = event.target;
             const formData = new FormData(form);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
+            const name = formData.get('name')?.trim();
+            const email = formData.get('email')?.trim();
+            const subject = formData.get('subject')?.trim();
+            const message = formData.get('message')?.trim();
             
-            // Simulate form submission
+            // Enhanced validation
+            if (!name || name.length < 2) {
+                showFormMessage('Please enter a valid name (at least 2 characters).', 'error');
+                return;
+            }
+            
+            if (!email || !isValidEmail(email)) {
+                showFormMessage('Please enter a valid email address.', 'error');
+                return;
+            }
+            
+            if (!subject || subject.length < 3) {
+                showFormMessage('Please enter a subject (at least 3 characters).', 'error');
+                return;
+            }
+            
+            if (!message || message.length < 10) {
+                showFormMessage('Please enter a message (at least 10 characters).', 'error');
+                return;
+            }
+            
+            // Simulate form submission with better UX
             const submitBtn = form.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
             
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+            
+            // Add loading animation
+            submitBtn.innerHTML = 'Sending... <span style="animation: spin 1s linear infinite;">⏳</span>';
             
             setTimeout(() => {
-                alert(`Thank you, ${name}! Your message has been sent successfully.\n\nSubject: ${subject}\n\nIn a real application, this would be sent to the server.`);
+                showFormMessage(`Thank you, ${name}! Your message has been sent successfully. We'll get back to you soon!`, 'success');
                 form.reset();
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
             }, 1500);
         }
 
