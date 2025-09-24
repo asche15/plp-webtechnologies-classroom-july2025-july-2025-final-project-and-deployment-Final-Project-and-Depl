@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Chen - Personal Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    </head>
+<body>
+    <div class="container">
+        <header>
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">🌙</button>
+            <div class="profile-img" onclick="animateProfile()">AC</div>
+            <h1>Alex Chen</h1>
+            <p class="tagline">Web Developer & Digital Storyteller</p>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="nav-link active" onclick="showSection('home')">Home</a></li>
+                    <li><a href="#about" class="nav-link" onclick="showSection('about')">About</a></li>
+                    <li><a href="#blog" class="nav-link" onclick="showSection('blog')">Blog</a></li>
+                    <li><a href="#projects" class="nav-link" onclick="showSection('projects')">Projects</a></li>
+                    <li><a href="#contact" class="nav-link" onclick="showSection('contact')">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search posts..." onkeyup="searchPosts(this.value)">
+        </div>
+
+        <div class="main-content">
+            <main class="content-area">
+                <!-- Home Section -->
+                <div id="home-section" class="section active">
+                    <div class="blog-posts">
+                        <h2 class="section-title">Latest Posts <span id="post-count">(3)</span></h2>
+                        <div id="posts-container">
+                            <article class="post" data-tags="css web-development responsive-design">
+                                <div class="post-date">December 15, 2024</div>
+                                <h3><a href="#post1" onclick="openPost('post1')">Building Responsive Web Applications with Modern CSS</a></h3>
+                                <p class="post-excerpt">Exploring the latest CSS features like Grid, Flexbox, and Container Queries to create truly responsive designs that work beautifully across all devices. Learn practical techniques and real-world examples...</p>
+                                <a href="#post1" class="read-more" onclick="openPost('post1')">Read More →</a>
+                                <div class="post-tags">
+                                    <span class="tag" onclick="filterByTag('css')">CSS</span>
+                                    <span class="tag" onclick="filterByTag('web-development')">Web Development</span>
+                                    <span class="tag" onclick="filterByTag('responsive-design')">Responsive Design</span>
+                                </div>
+                            </article>
+
+                            <article class="post" data-tags="programming best-practices career">
+                                <div class="post-date">December 10, 2024</div>
+                                <h3><a href="#post2" onclick="openPost('post2')">The Art of Clean Code: Lessons from 5 Years of Development</a></h3>
+                                <p class="post-excerpt">Reflecting on the journey from writing messy scripts to crafting maintainable, elegant code. Discover the principles and practices that transformed my approach to software development...</p>
+                                <a href="#post2" class="read-more" onclick="openPost('post2')">Read More →</a>
+                                <div class="post-tags">
+                                    <span class="tag" onclick="filterByTag('programming')">Programming</span>
+                                    <span class="tag" onclick="filterByTag('best-practices')">Best Practices</span>
+                                    <span class="tag" onclick="filterByTag('career')">Career</span>
+                                </div>
+                            </article>
+
+                            <article class="post" data-tags="javascript es2024 frontend">
+                                <div class="post-date">December 5, 2024</div>
+                                <h3><a href="#post3" onclick="openPost('post3')">JavaScript ES2024: New Features That Will Change How You Code</a></h3>
+                                <p class="post-excerpt">A deep dive into the latest JavaScript features including temporal API, pattern matching, and enhanced async capabilities. See how these additions can streamline your development workflow...</p>
+                                <a href="#post3" class="read-more" onclick="openPost('post3')">Read More →</a>
+                                <div class="post-tags">
+                                    <span class="tag" onclick="filterByTag('javascript')">JavaScript</span>
+                                    <span class="tag" onclick="filterByTag('es2024')">ES2024</span>
+                                    <span class="tag" onclick="filterByTag('frontend')">Frontend</span>
+                                </div>
+                            </article>
+                        </div>
+                        <div id="no-results" class="no-results" style="display: none;">
+                            <h3>No posts found</h3>
+                            <p>Try adjusting your search terms or browse by category.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Section -->
+                <div id="about-section" class="section">
+                    <div class="blog-posts">
+                        <h2 class="section-title">About Me</h2>
+                        <div class="about-content">
+                            <div class="about-intro">
+                                <h3>Hello, I'm Alex Chen! 👋</h3>
+                                <p>I'm a passionate web developer with over 5 years of experience creating beautiful, functional, and user-friendly digital experiences. My journey in tech started with curiosity and has evolved into a deep love for crafting elegant solutions to complex problems.</p>
+                            </div>
+                            
+                            <div class="skills-section">
+                                <h3>Technical Skills</h3>
+                                <div class="skills-grid">
+                                    <div class="skill-item">
+                                        <h4>Frontend</h4>
+                                        <p>React, Vue.js, JavaScript (ES6+), TypeScript, HTML5, CSS3, Sass</p>
+                                    </div>
+                                    <div class="skill-item">
+                                        <h4>Backend</h4>
+                                        <p>Node.js, Python, Express.js, REST APIs, GraphQL</p>
+                                    </div>
+                                    <div class="skill-item">
+                                        <h4>Tools & Others</h4>
+                                        <p>Git, Docker, AWS, MongoDB, PostgreSQL, Figma</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="experience-section">
+                                <h3>Experience</h3>
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">2022 - Present</div>
+                                        <div class="timeline-content">
+                                            <h4>Senior Frontend Developer</h4>
+                                            <p>Leading frontend development for a fintech startup, building scalable React applications serving 100k+ users.</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">2020 - 2022</div>
+                                        <div class="timeline-content">
+                                            <h4>Full Stack Developer</h4>
+                                            <p>Developed and maintained multiple web applications using modern JavaScript frameworks and cloud technologies.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Section -->
+                <div id="blog-section" class="section">
+                    <div class="blog-posts">
+                        <h2 class="section-title">All Blog Posts</h2>
+                        <div class="blog-archive">
+                            <div class="archive-filters">
+                                <button class="filter-btn active" onclick="filterArchive('all')">All Posts</button>
+                                <button class="filter-btn" onclick="filterArchive('2024')">2024</button>
+                                <button class="filter-btn" onclick="filterArchive('web-dev')">Web Dev</button>
+                                <button class="filter-btn" onclick="filterArchive('javascript')">JavaScript</button>
+                            </div>
+                            <div class="archive-posts">
+                                <article class="archive-post" data-year="2024" data-category="web-dev">
+                                    <div class="archive-date">Dec 15, 2024</div>
+                                    <h3><a href="#post1">Building Responsive Web Applications with Modern CSS</a></h3>
+                                    <p>Complete guide to modern CSS techniques for responsive design.</p>
+                                </article>
+                                <article class="archive-post" data-year="2024" data-category="career">
+                                    <div class="archive-date">Dec 10, 2024</div>
+                                    <h3><a href="#post2">The Art of Clean Code: Lessons from 5 Years</a></h3>
+                                    <p>Insights and best practices learned from years of development experience.</p>
+                                </article>
+                                <article class="archive-post" data-year="2024" data-category="javascript">
+                                    <div class="archive-date">Dec 5, 2024</div>
+                                    <h3><a href="#post3">JavaScript ES2024: New Features That Will Change How You Code</a></h3>
+                                    <p>Exploring the latest JavaScript features and their practical applications.</p>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects Section -->
+                <div id="projects-section" class="section">
+                    <div class="blog-posts">
+                        <h2 class="section-title">My Projects</h2>
+                        <div class="projects-grid">
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <h3>E-Commerce Platform</h3>
+                                    <div class="project-status">Live</div>
+                                </div>
+                                <p class="project-description">A full-stack e-commerce solution built with React, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">Node.js</span>
+                                    <span class="tech-tag">MongoDB</span>
+                                    <span class="tech-tag">Stripe</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#demo" class="project-link">Live Demo</a>
+                                    <a href="#github" class="project-link">GitHub</a>
+                                </div>
+                            </div>
+
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <h3>Task Management App</h3>
+                                    <div class="project-status">In Progress</div>
+                                </div>
+                                <p class="project-description">A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Vue.js</span>
+                                    <span class="tech-tag">Socket.io</span>
+                                    <span class="tech-tag">Express</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#demo" class="project-link">Preview</a>
+                                    <a href="#github" class="project-link">GitHub</a>
+                                </div>
+                            </div>
+
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <h3>Weather Dashboard</h3>
+                                    <div class="project-status">Completed</div>
+                                </div>
+                                <p class="project-description">A responsive weather dashboard with location-based forecasts, interactive maps, and historical weather data visualization.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">Chart.js</span>
+                                    <span class="tech-tag">OpenWeather API</span>
+                                    <span class="tech-tag">CSS Grid</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#demo" class="project-link">Live Demo</a>
+                                    <a href="#github" class="project-link">GitHub</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div id="contact-section" class="section">
+                    <div class="blog-posts">
+                        <h2 class="section-title">Get In Touch</h2>
+                        <div class="contact-content">
+                            <div class="contact-intro">
+                                <h3>Let's Connect! 🚀</h3>
+                                <p>I'm always excited to discuss new opportunities, collaborate on interesting projects, or just chat about technology. Feel free to reach out through any of the channels below.</p>
+                            </div>
+
+                            <div class="contact-methods">
+                                <div class="contact-method">
+                                    <div class="contact-icon">📧</div>
+                                    <div class="contact-info">
+                                        <h4>Email</h4>
+                                        <p>alex.chen@example.com</p>
+                                        <a href="mailto:alex.chen@example.com" class="contact-link">Send Email</a>
+                                    </div>
+                                </div>
+
+                                <div class="contact-method">
+                                    <div class="contact-icon">💼</div>
+                                    <div class="contact-info">
+                                        <h4>LinkedIn</h4>
+                                        <p>Connect with me professionally</p>
+                                        <a href="#linkedin" class="contact-link" onclick="openSocial('linkedin')">View Profile</a>
+                                    </div>
+                                </div>
+
+                                <div class="contact-method">
+                                    <div class="contact-icon">💻</div>
+                                    <div class="contact-info">
+                                        <h4>GitHub</h4>
+                                        <p>Check out my code and projects</p>
+                                        <a href="#github" class="contact-link" onclick="openSocial('github')">View Repositories</a>
+                                    </div>
+                                </div>
+
+                                <div class="contact-method">
+                                    <div class="contact-icon">🐦</div>
+                                    <div class="contact-info">
+                                        <h4>Twitter</h4>
+                                        <p>Follow for tech updates and thoughts</p>
+                                        <a href="#twitter" class="contact-link" onclick="openSocial('twitter')">Follow Me</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contact-form">
+                                <h3>Send a Message</h3>
+                                <form onsubmit="sendMessage(event)">
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" id="name" name="name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" name="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="subject">Subject</label>
+                                        <input type="text" id="subject" name="subject" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message">Message</label>
+                                        <textarea id="message" name="message" rows="5" required></textarea>
+                                    </div>
+                                    <button type="submit" class="submit-btn">Send Message</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <aside class="sidebar">
+                <div class="widget about">
+                    <h3>About Me</h3>
+                    <p class="about-text">Hi! I'm Alex, a passionate web developer with 5+ years of experience creating digital experiences. I love sharing knowledge about modern web technologies and helping others grow in their coding journey.</p>
+                </div>
+
+                <div class="widget recent-posts">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        <li onclick="loadPost('recent1')">
+                            <a href="#recent1">10 VS Code Extensions Every Developer Needs</a>
+                            <div class="recent-date">Dec 12, 2024</div>
+                        </li>
+                        <li onclick="loadPost('recent2')">
+                            <a href="#recent2">Understanding React Server Components</a>
+                            <div class="recent-date">Dec 8, 2024</div>
+                        </li>
+                        <li onclick="loadPost('recent3')">
+                            <a href="#recent3">CSS Grid vs Flexbox: When to Use What</a>
+                            <div class="recent-date">Dec 3, 2024</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="widget categories">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#web-dev" onclick="filterByCategory('web-development')">Web Development (12)</a></li>
+                        <li><a href="#javascript" onclick="filterByCategory('javascript')">JavaScript (8)</a></li>
+                        <li><a href="#css" onclick="filterByCategory('css')">CSS & Design (6)</a></li>
+                        <li><a href="#career" onclick="filterByCategory('career')">Career Tips (4)</a></li>
+                        <li><a href="#tutorials" onclick="filterByCategory('tutorials')">Tutorials (10)</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <footer>
+            <div class="social-links">
+                <a href="#twitter" title="Twitter" onclick="openSocial('twitter')">🐦</a>
+                <a href="#github" title="GitHub" onclick="openSocial('github')">💻</a>
+                <a href="#linkedin" title="LinkedIn" onclick="openSocial('linkedin')">💼</a>
+                <a href="#email" title="Email" onclick="openSocial('email')">📧</a>
+            </div>
+            <p>&copy; 2024 Alex Chen. All rights reserved. Built with passion and lots of coffee ☕</p>
+        </footer>
+    </div>
+
+    <script src="script.js">
+      
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98449b8ca16d348a',t:'MTc1ODc0MTI5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
